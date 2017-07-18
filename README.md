@@ -1,0 +1,1 @@
+# nem-library-angular2-seed
