@@ -1,0 +1,32 @@
+{
+  "name": "nem-library-angular2-seed",
+  "version": "1.0.0",
+  "description": "NEM Library with Angular 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guillemsole/nem-library-angular2-seed.git"
+  },
+  "keywords": [
+    "NEM",
+    "NEM Library",
+    "Blockchain",
+    "Angular",
+    "Seed"
+  ],
+  "author": "Guillem <guillemchain@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guillemsole/nem-library-angular2-seed/issues"
+  },
+  "homepage": "https://github.com/guillemsole/nem-library-angular2-seed#readme",
+  "dependencies": {
+    "nem-library": "^0.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.4.2"
+  }
+}
