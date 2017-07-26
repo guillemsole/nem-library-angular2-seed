@@ -1,8 +1,11 @@
 # nem-library-angular2-seed
 
-## NEM Library
+## Components used
 
-- Documentation: [nemlibrary.com](https://nemlibrary.com)
+- [NEMLibrary.com](https://nemlibrary.com):
+- [Angular 4](https://angular.io/):
+- [Angular Material](https://material.angular.io):
+- [Materialize](http://materializecss.com/):
 
 ## Development server
 

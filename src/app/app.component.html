@@ -1,10 +1,81 @@
-<md-toolbar color="primary">
-  <img src="assets/img/nem_logo100x100.png" height="20" width="20" /> <span style="margin-left: 0.5em">NEM Library Angular 4 Seed</span>
-</md-toolbar>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper valign-wrapper blue darken-3">
+      <img src="assets/img/nem_logo100x100.png" height="20" width="20" style="margin-left: 1.5em " />
+      <span style="margin-left: 0.5em">NEM Library Angular 4 Seed</span>
+    </div>
+  </nav>
+</div>
 
-<md-grid-list cols="4" rowHeight="100px">
-  <md-grid-tile
-      colspan="1"
-      rowspan="1">
-  </md-grid-tile>
-</md-grid-list>
+<div class="container" style="">
+  <div class="row">
+    <div class="col s4">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Transactions List</span>
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
+            markup to use effectively.
+          </p>
+          <ul class="collection">
+            <li class="collection-item" *ngFor="let transaction of allTransactions">
+              Signer: {{transaction.signer.address.pretty()}} Type: {{transaction.type}}
+            </li>
+          </ul>
+          <a class="waves-effect waves-light btn" (click)="fetchMoreTransactions()">next 25 transactions</a>
+        </div>
+        <div class="card-action">
+          <a href="https://nemlibrary.com/guide/account/#how-to-receive-all-transactions-for-an-account" target="_blank">
+            View documentation
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col s4">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Listen incoming transactions</span>
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
+            markup to use effectively.</p>
+          <ul class="collection">
+            <li class="collection-item" *ngFor="let transaction of incomingTransactions">
+              Height: {{transaction.signer.pretty()}} Type: {{transaction.type}}
+            </li>
+          </ul>
+        </div>
+        <div class="card-action">
+          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-unconfirmed-transactions-information" target="_blank">
+            View documentation
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col s4">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">New blocks listener</span>
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
+            markup to use effectively.</p>
+          <ul class="collection">
+            <li class="collection-item" *ngFor="let block of blocks">
+              Height: {{block.height}} Number of transactions: {{block.transactions.length}}
+            </li>
+          </ul>
+        </div>
+        <div class="card-action">
+          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-new-blocks-information" target="_blank">
+            View documentation
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="page-footer blue darken-3">
+  <div class="footer-copyright">
+    <div class="container">
+      2017 <a href="https://nemlibrary.com" style="color: white"> nemlibrary.com </a> Made with ❤️ in Barcelona.
+    </div>
+  </div>
+</footer>
