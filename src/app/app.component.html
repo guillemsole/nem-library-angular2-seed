@@ -34,17 +34,52 @@
     <div class="col s4">
       <div class="card">
         <div class="card-content">
+          <div class="preloader-wrapper small active right"
+               *ngIf="unconfirmedTransactionsActive">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
           <span class="card-title">Listen unconfirmed transactions</span>
           <p>
-            Listen the unconfirmed transactions for an account
+            Listen the unconfirmed transactions for an account.
+            <span style="color: darkred"><b>Just testnet</b></span>
           </p>
-          <div class="row">
-          <form>
-            <div class="input-field col s12">
-              <input id="address" type="text" class="validate">
-              <label for="address">Address</label>
+          <p>
+            Sample address:
+          </p>
+          <code>
+            TDM3DO-ZM5WJ3-ZRBPSM-YRU6JS-WKUCAH-5VIPOF-4W7K
+          </code>
+          <div class="">
+            <div class="switch">
+              <label>
+                Off
+                <input type="checkbox"
+                       [disabled]="!unconfirmedTransactionsActive"
+                       [checked]="unconfirmedTransactionsActive"
+                       (click)="stopUnconfirmedListener()">
+                <span class="lever"></span>
+                On
+              </label>
             </div>
-          </form>
+            <div class="input-field">
+              <input #address id="address_input" type="text">
+              <label for="address_input">Address</label>
+            </div>
+            <div class="input-field center-align">
+              <button class="waves-effect waves-light btn" (click)="start(address.value)">
+                <i class="material-icons tiny">send</i> Start
+              </button>
+            </div>
           </div>
           <ul class="collection">
             <li class="collection-item" *ngFor="let transaction of incomingTransactions">

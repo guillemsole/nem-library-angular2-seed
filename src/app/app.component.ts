@@ -27,6 +27,7 @@ export class AppComponent {
 
   // View
   blockListenerActive: boolean = false;
+  unconfirmedTransactionsActive: boolean = false;
 
   constructor(private blockchainListener: BlockchainListener,
               private unconfirmedTransactionListener: UnconfirmedTransactionListener,
@@ -61,15 +62,31 @@ export class AppComponent {
     this.blockListenerActive = !this.blockListenerActive;
   }
 
-  changeUnconfirmedTransactions(address: string) {
-    this.unconfirmedTransactionsSubscription =
-      this.unconfirmedTransactionListener
-        .given(new Address(address))
-        .subscribe(transaction => {
-          console.log("unconfirmedTransactionListener for " + address, transaction);
-          this.incomingTransactions.unshift(transaction);
-        }, err => {
-          console.error("unconfirmedTransactionListener for " + address, err)
-        });
+  stopUnconfirmedListener() {
+    if (this.unconfirmedTransactionsActive) {
+      this.unconfirmedTransactionsSubscription.unsubscribe();
+      console.log("Unsubscribed")
+    }
+    this.unconfirmedTransactionsActive = false;
+  }
+
+  start(raw_address: string) {
+    let address: Address;
+    try {
+      address = new Address(raw_address);
+      this.unconfirmedTransactionsSubscription =
+        this.unconfirmedTransactionListener
+          .given(address)
+          .subscribe(transaction => {
+            console.log("unconfirmedTransactionListener for " + raw_address, transaction);
+            this.incomingTransactions.unshift(transaction);
+          }, err => {
+            console.error("unconfirmedTransactionListener for " + raw_address, err)
+          });
+      this.unconfirmedTransactionsActive = true;
+    } catch (e) {
+      alert("malformed address");
+    }
+
   }
 }
