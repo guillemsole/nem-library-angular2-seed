@@ -33,3 +33,15 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 To get help on the Angular Material, checkout the [official docs](https://material.angular.io)
+
+## Development
+
+Dev dependencies
+
+`npm install -g angular-cli-ghpages`
+
+Build the application
+`ng build --prod --aot --base-href "https://guillemsole.github.io/nem-library-angular2-seed/"`
+
+Upload to github pages
+`ngh`
