@@ -38,7 +38,14 @@
           <p>
             Listen the unconfirmed transactions for an account
           </p>
-
+          <div class="row">
+          <form>
+            <div class="input-field col s12">
+              <input id="address" type="text" class="validate">
+              <label for="address">Address</label>
+            </div>
+          </form>
+          </div>
           <ul class="collection">
             <li class="collection-item" *ngFor="let transaction of incomingTransactions">
               Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span>

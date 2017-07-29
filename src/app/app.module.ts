@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdMenuModule, MdToolbarModule, MdGridListModule} from '@angular/material';
+import { MaterializeModule } from "angular2-materialize";
 import {BlockchainListener, NEMLibrary, NetworkTypes, UnconfirmedTransactionListener, AccountHttp} from "nem-library";
 import {BlockchainListenerProvider} from "./providers/BlockchainListenerProvider";
 import {UnconfirmedTransactionListenerProvider} from "./providers/UnconfirmedTransactionListenerProvider";
@@ -19,9 +19,7 @@ NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MdMenuModule,
-    MdToolbarModule,
-    MdGridListModule
+    MaterializeModule
   ],
   providers: [
     {provide: BlockchainListener, useFactory: BlockchainListenerProvider},
