@@ -8,6 +8,7 @@ import {
   Transaction,
   UnconfirmedTransactionListener
 } from "nem-library";
+import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import {Subscription} from "rxjs/Subscription";
 
 @Component({
@@ -30,7 +31,8 @@ export class AppComponent {
   unconfirmedTransactionsActive: boolean = false;
   allTransactionsActive: boolean = false;
 
-  constructor(private blockchainListener: BlockchainListener,
+  constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+              private blockchainListener: BlockchainListener,
               private unconfirmedTransactionListener: UnconfirmedTransactionListener,
               private accountHttp: AccountHttp) {
   }

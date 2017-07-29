@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterializeModule } from "angular2-materialize";
+import { RouterModule } from '@angular/router';
 import {BlockchainListener, NEMLibrary, NetworkTypes, UnconfirmedTransactionListener, AccountHttp} from "nem-library";
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
@@ -22,7 +23,7 @@ NEMLibrary.bootstrap(NetworkTypes.TEST_NET);
     BrowserModule,
     BrowserAnimationsModule,
     MaterializeModule,
-
+    RouterModule.forRoot([]),
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
   ],
   providers: [
