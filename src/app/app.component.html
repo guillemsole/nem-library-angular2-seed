@@ -13,15 +13,15 @@
       <div class="card">
         <div class="card-content">
           <span class="card-title">Transactions List</span>
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
-            markup to use effectively.
-          </p>
           <ul class="collection">
             <li class="collection-item" *ngFor="let transaction of allTransactions">
-              Signer: {{transaction.signer.address.pretty()}} Type: {{transaction.type}}
+              Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span>
+              Type: {{transaction.type}}
+              <br/>
+              Timestamp: {{transaction.timeWindow.timeStamp.toString()}}
             </li>
           </ul>
-          <a class="waves-effect waves-light btn" (click)="fetchMoreTransactions()">next 25 transactions</a>
+          <a class="waves-effect waves-light btn" (click)="fetchMoreTransactions()">next 5 transactions</a>
         </div>
         <div class="card-action">
           <a href="https://nemlibrary.com/guide/account/#how-to-receive-all-transactions-for-an-account" target="_blank">
@@ -34,11 +34,10 @@
       <div class="card">
         <div class="card-content">
           <span class="card-title">Listen incoming transactions</span>
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
-            markup to use effectively.</p>
           <ul class="collection">
             <li class="collection-item" *ngFor="let transaction of incomingTransactions">
-              Height: {{transaction.signer.pretty()}} Type: {{transaction.type}}
+              Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span>
+              Type: {{transaction.type}}
             </li>
           </ul>
         </div>
@@ -53,8 +52,6 @@
       <div class="card">
         <div class="card-content">
           <span class="card-title">New blocks listener</span>
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
-            markup to use effectively.</p>
           <ul class="collection">
             <li class="collection-item" *ngFor="let block of blocks">
               Height: {{block.height}} Number of transactions: {{block.transactions.length}}

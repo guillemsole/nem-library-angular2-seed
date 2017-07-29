@@ -26,7 +26,7 @@ export class AppComponent {
         this.incomingTransactions.unshift(transaction);
       });
 
-    this.allTransactionsPaginated = accountHttp.allTransactionsPaginated(new Address("TCJZJH-AV63RE-2JSKN2-7DFIHZ-RXIHAI-736WXE-OJGA"));
+    this.allTransactionsPaginated = accountHttp.allTransactionsPaginated(new Address("TCJZJH-AV63RE-2JSKN2-7DFIHZ-RXIHAI-736WXE-OJGA"), undefined, 5);
 
     this.allTransactionsPaginated.subscribe(x => {
       this.allTransactions = this.allTransactions.concat(x);
