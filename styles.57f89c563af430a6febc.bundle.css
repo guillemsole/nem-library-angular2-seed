@@ -1,4 +1,4 @@
-body,html{padding:0;margin:0}/*!
+html{height:100%;box-sizing:border-box;padding:0;margin:0}*,:after,:before{box-sizing:inherit}body{position:relative;margin:0;padding-bottom:250px;min-height:100%}footer{position:absolute;right:0;bottom:0;left:0}/*!
  * Materialize v0.100.1 (http://materializecss.com)
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
