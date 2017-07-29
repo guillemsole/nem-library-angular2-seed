@@ -1,8 +1,8 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper valign-wrapper blue darken-3">
-      <img src="assets/img/nem_logo100x100.png" height="20" width="20" style="margin-left: 1.5em " />
-      <span style="margin-left: 0.5em">NEM Library Angular 4 Seed</span>
+      <img src="assets/img/nem_logo100x100.png" height="20" width="20" style="margin-left: 1.5em "/>
+      <span style="margin-left: 0.5em"><a href="https://nemlibrary.com">NEM Library </a>Angular 4 Seed</span>
     </div>
   </nav>
 </div>
@@ -24,7 +24,8 @@
           <a class="waves-effect waves-light btn" (click)="fetchMoreTransactions()">next 5 transactions</a>
         </div>
         <div class="card-action">
-          <a href="https://nemlibrary.com/guide/account/#how-to-receive-all-transactions-for-an-account" target="_blank">
+          <a href="https://nemlibrary.com/guide/account/#how-to-receive-all-transactions-for-an-account"
+             target="_blank">
             View documentation
           </a>
         </div>
@@ -33,7 +34,11 @@
     <div class="col s4">
       <div class="card">
         <div class="card-content">
-          <span class="card-title">Listen incoming transactions</span>
+          <span class="card-title">Listen unconfirmed transactions</span>
+          <p>
+            Listen the unconfirmed transactions for an account
+          </p>
+
           <ul class="collection">
             <li class="collection-item" *ngFor="let transaction of incomingTransactions">
               Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span>
@@ -42,7 +47,9 @@
           </ul>
         </div>
         <div class="card-action">
-          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-unconfirmed-transactions-information" target="_blank">
+          <a
+            href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-unconfirmed-transactions-information"
+            target="_blank">
             View documentation
           </a>
         </div>
@@ -51,15 +58,41 @@
     <div class="col s4">
       <div class="card">
         <div class="card-content">
-          <span class="card-title">New blocks listener</span>
+          <span class="card-title">
+            New blocks listener
+
+          </span>
+          <!-- Switch -->
+          <div class="switch">
+            <label>
+              Off
+              <input type="checkbox"
+                     [checked]="blockListenerActive"
+                     (click)="changeBlockListener()">
+              <span class="lever"></span>
+              On
+            </label>
+          </div>
+          <br/>
+          <p>
+            The application listens the NEM Blockchain for new blocks. When a new block
+            is included in the blockchain, the the method is triggered and we receive it
+            automatically.
+          </p>
+          <p>
+            Just wait a minute, and you will see a new block.
+          </p>
+
           <ul class="collection">
             <li class="collection-item" *ngFor="let block of blocks">
-              Height: {{block.height}} Number of transactions: {{block.transactions.length}}
+              Height: {{block.height}} <br/>
+              Number of transactions: {{block.transactions.length}}
             </li>
           </ul>
         </div>
         <div class="card-action">
-          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-new-blocks-information" target="_blank">
+          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-new-blocks-information"
+             target="_blank">
             View documentation
           </a>
         </div>
@@ -70,6 +103,61 @@
 </div>
 
 <footer class="page-footer blue darken-3">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">NEM Library</h5>
+        <p class="grey-text text-lighten-4"></p>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">References</h5>
+        <ul>
+          <li><a class="white-text"
+                 href="https://nemlibrary.com"
+                 target="_blank">
+            <i class="material-icons tiny">link</i>
+            nem library documentation</a></li>
+          <li><a class="white-text"
+                 href="https://github.com/aleixmorgadas/nem-library-examples"
+                 target="_blank">
+            <i class="material-icons tiny">link</i>
+            nem library examples</a></li>
+          <li><a class="white-text"
+                 href="https://github.com/guillemsole/nem-library-angular2-seed"
+                 target="_blank">
+            <i class="material-icons tiny">link</i>
+            angular seed repository</a></li>
+          <li><a class="white-text"
+                 href="https://github.com/guillemsole/nem-library-ionic2-seed"
+                 target="_blank">
+            <i class="material-icons tiny">link</i>
+            ionic seed repository</a></li>
+        </ul>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Connect</h5>
+        <ul>
+
+          <li><a class="white-text"
+                 href="https://twitter.com/gsolecubilo"
+                 target="_blank">
+            <i class="material-icons tiny">link</i>
+            Guillem's Twitter
+          </a></li>
+          <li><a class="white-text"
+                 href="https://twitter.com/aleix_mp"
+                 target="_blank">
+            <i class="material-icons tiny">link</i>
+            Aleix's Twitter</a></li>
+          <li><a class="white-text"
+                 href="https://medium.com/@aleixmorgadas"
+                 target="_blank">
+            <i class="material-icons tiny">link</i>
+            Aleix's Medium</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <div class="footer-copyright">
     <div class="container">
       2017 <a href="https://nemlibrary.com" style="color: white"> nemlibrary.com </a> Made with ❤️ in Barcelona.
