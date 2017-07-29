@@ -28,21 +28,35 @@ export class AppComponent {
   // View
   blockListenerActive: boolean = false;
   unconfirmedTransactionsActive: boolean = false;
+  allTransactionsActive: boolean = false;
 
   constructor(private blockchainListener: BlockchainListener,
               private unconfirmedTransactionListener: UnconfirmedTransactionListener,
               private accountHttp: AccountHttp) {
+  }
 
-    // this.changeBlockListener();
-    this.allTransactionsPaginated = accountHttp.allTransactionsPaginated(new Address("TCJZJH-AV63RE-2JSKN2-7DFIHZ-RXIHAI-736WXE-OJGA"), undefined, 5);
+  startFetchingTransactions(address_raw: string) {
+    try {
+      let address = new Address(address_raw.trim());
+      console.log(address);
+      this.allTransactions = [];
+      this.allTransactionsPaginated =
+        this.accountHttp.allTransactionsPaginated(address, undefined, 5);
 
-    this.allTransactionsPaginated.subscribe(x => {
-      this.allTransactions = this.allTransactions.concat(x);
-    })
+      this.allTransactionsPaginated.subscribe(x => {
+        this.allTransactions = this.allTransactions.concat(x);
+      });
+      this.allTransactionsActive = true;
+    } catch (e) {
+      alert("malformed address");
+    }
+
   }
 
   fetchMoreTransactions() {
-    this.allTransactionsPaginated.nextPage();
+    if(this.allTransactionsActive){
+      this.allTransactionsPaginated.nextPage();
+    }
   }
 
   changeBlockListener() {
