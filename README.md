@@ -34,7 +34,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 To get help on the Angular Material, checkout the [official docs](https://material.angular.io)
 
-## Development
+## Publish into github pages
 
 Dev dependencies
 
