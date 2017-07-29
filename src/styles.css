@@ -1,6 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
+
+html {
+    height: 100%;
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 250px;
+    min-height: 100%;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
