@@ -17,7 +17,8 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class AppComponent {
   // Listeners
-  blockchainObservable: Subscription;
+  blockSubscription: Subscription;
+  unconfirmedTransactionsSubscription: Subscription;
 
   blocks: Block[] = [];
   incomingTransactions: Transaction[] = [];
@@ -25,20 +26,13 @@ export class AppComponent {
   allTransactions: Transaction[] = [];
 
   // View
-  blockListenerActive: boolean = true;
+  blockListenerActive: boolean = false;
 
   constructor(private blockchainListener: BlockchainListener,
               private unconfirmedTransactionListener: UnconfirmedTransactionListener,
               private accountHttp: AccountHttp) {
-    this.blockchainObservable = blockchainListener.newBlock().subscribe(block => {
-      this.blocks.unshift(block);
-    });
 
-    unconfirmedTransactionListener.given(new Address("TCJZJH-AV63RE-2JSKN2-7DFIHZ-RXIHAI-736WXE-OJGA"))
-      .subscribe(transaction => {
-        this.incomingTransactions.unshift(transaction);
-      });
-
+    // this.changeBlockListener();
     this.allTransactionsPaginated = accountHttp.allTransactionsPaginated(new Address("TCJZJH-AV63RE-2JSKN2-7DFIHZ-RXIHAI-736WXE-OJGA"), undefined, 5);
 
     this.allTransactionsPaginated.subscribe(x => {
@@ -52,15 +46,30 @@ export class AppComponent {
 
   changeBlockListener() {
     if (this.blockListenerActive) {
-      this.blockchainObservable.unsubscribe();
+      this.blockSubscription.unsubscribe();
       console.log("Unsubscribed")
     } else {
-      this.blockchainObservable = this.blockchainListener.newBlock()
+      this.blockSubscription = this.blockchainListener.newBlock()
         .subscribe(block => {
+          console.log("NEW BLOCK", block);
           this.blocks.unshift(block);
+        }, err => {
+          console.error("blockchainListener", err);
         });
       console.log("subscribed");
     }
     this.blockListenerActive = !this.blockListenerActive;
+  }
+
+  changeUnconfirmedTransactions(address: string) {
+    this.unconfirmedTransactionsSubscription =
+      this.unconfirmedTransactionListener
+        .given(new Address(address))
+        .subscribe(transaction => {
+          console.log("unconfirmedTransactionListener for " + address, transaction);
+          this.incomingTransactions.unshift(transaction);
+        }, err => {
+          console.error("unconfirmedTransactionListener for " + address, err)
+        });
   }
 }

@@ -58,9 +58,22 @@
     <div class="col s4">
       <div class="card">
         <div class="card-content">
+          <div class="preloader-wrapper small active right"
+               *ngIf="blockListenerActive">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
           <span class="card-title">
             New blocks listener
-
           </span>
           <!-- Switch -->
           <div class="switch">
