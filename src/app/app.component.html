@@ -1,7 +1,7 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper valign-wrapper blue darken-3">
-      <img src="assets/img/nem_logo100x100.png" height="20" width="20" style="margin-left: 1.5em "/>
+      <img src="assets/img/nem_logo100x100.png" height="20" width="20" style="margin-left: 1.5em " />
       <span style="margin-left: 0.5em"><a href="https://nemlibrary.com">NEM Library </a>Angular 4 Seed</span>
     </div>
   </nav>
@@ -32,29 +32,24 @@
           </div>
           <ul class="collection">
             <li class="collection-item" *ngFor="let transaction of allTransactions">
-              Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span>
-              Type: {{transaction.type}}
-              <br/>
-              Timestamp: {{transaction.timeWindow.timeStamp.toString()}}
+              Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span> Type: {{transaction.type}}
+              <br/> Timestamp: {{transaction.timeWindow.timeStamp.toString()}}
             </li>
           </ul>
           <a *ngIf="allTransactionsActive" class="waves-effect waves-light btn" (click)="fetchMoreTransactions()">next 5 transactions</a>
         </div>
         <div class="card-action">
-          <a href="https://nemlibrary.com/guide/account/#how-to-receive-all-transactions-for-an-account"
-             target="_blank">
+          <a href="https://nemlibrary.com/guide/account/#how-to-receive-all-transactions-for-an-account" target="_blank">
             View documentation
           </a>
-          <a 
-          target="_blank" href="https://github.com/guillemsole/nem-library-angular2-seed/blob/master/src/app/app.component.ts#L38-L60">View Source Code</a>
+          <a target="_blank" href="https://github.com/guillemsole/nem-library-angular2-seed/blob/master/src/app/app.component.ts#L38-L60">View Source Code</a>
         </div>
       </div>
     </div>
     <div class="col s12 m12 l4 xl4">
       <div class="card">
         <div class="card-content">
-          <div class="preloader-wrapper small active right"
-               *ngIf="unconfirmedTransactionsActive">
+          <div class="preloader-wrapper small active right" *ngIf="unconfirmedTransactionsActive">
             <div class="spinner-layer spinner-green-only">
               <div class="circle-clipper left">
                 <div class="circle"></div>
@@ -69,8 +64,8 @@
           </div>
           <span class="card-title">Listen unconfirmed transactions</span>
           <p>
-            Listen the unconfirmed transactions for an account. When you start listening, send
-            a transaction to the address you have introduced.
+            Listen the unconfirmed transactions for an account. When you start listening, send a transaction to the address you have
+            introduced.
             <br/><span style="color: darkred"><b>Just testnet</b></span>
           </p>
           <br/>
@@ -104,27 +99,22 @@
           </div>
           <ul class="collection">
             <li class="collection-item" *ngFor="let transaction of incomingTransactions">
-              Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span>
-              Type: {{transaction.type}}
+              Signer: <span class="truncate"> {{transaction.signer.address.pretty()}} </span> Type: {{transaction.type}}
             </li>
           </ul>
         </div>
         <div class="card-action">
-          <a
-            href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-unconfirmed-transactions-information"
-            target="_blank">
+          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-unconfirmed-transactions-information" target="_blank">
             View documentation
           </a>
-          <a 
-          target="_blank" href="https://github.com/guillemsole/nem-library-angular2-seed/blob/master/src/app/app.component.ts#L87-L105">View Source Code</a>
+          <a target="_blank" href="https://github.com/guillemsole/nem-library-angular2-seed/blob/master/src/app/app.component.ts#L87-L105">View Source Code</a>
         </div>
       </div>
     </div>
     <div class="col s12 m12 l4 xl4">
       <div class="card">
         <div class="card-content">
-          <div class="preloader-wrapper small active right"
-               *ngIf="blockListenerActive">
+          <div class="preloader-wrapper small active right" *ngIf="blockListenerActive">
             <div class="spinner-layer spinner-green-only">
               <div class="circle-clipper left">
                 <div class="circle"></div>
@@ -153,9 +143,8 @@
           </div>
           <br/>
           <p>
-            The application listens the NEM Blockchain for new blocks. When a new block
-            is included in the blockchain, the the method is triggered and we receive it
-            automatically.
+            The application listens the NEM Blockchain for new blocks. When a new block is included in the blockchain, the the method
+            is triggered and we receive it automatically.
           </p>
           <p>
             Just wait a minute, and you will see a new block.
@@ -163,19 +152,16 @@
 
           <ul class="collection">
             <li class="collection-item" *ngFor="let block of blocks">
-              Height: {{block.height}} <br/>
-              Number of transactions: {{block.transactions.length}}
+              Height: {{block.height}} <br/> Number of transactions: {{block.transactions.length}}
             </li>
           </ul>
         </div>
         <div class="card-action">
-          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-new-blocks-information"
-             target="_blank">
+          <a href="https://nemlibrary.com/guide/listener/#how-to-create-a-listener-for-new-blocks-information" target="_blank">
             View documentation
           </a>
 
-          <a 
-          target="_blank" href="https://github.com/guillemsole/nem-library-angular2-seed/blob/master/src/app/app.component.ts#L62-L85">View Source Code</a>
+          <a target="_blank" href="https://github.com/guillemsole/nem-library-angular2-seed/blob/master/src/app/app.component.ts#L62-L85">View Source Code</a>
         </div>
       </div>
     </div>
@@ -193,24 +179,16 @@
       <div class="col l3 s12">
         <h5 class="white-text">References</h5>
         <ul>
-          <li><a class="white-text"
-                 href="https://nemlibrary.com"
-                 target="_blank">
+          <li><a class="white-text" href="https://nemlibrary.com" target="_blank">
             <i class="material-icons tiny">link</i>
             nem library documentation</a></li>
-          <li><a class="white-text"
-                 href="https://github.com/aleixmorgadas/nem-library-examples"
-                 target="_blank">
+          <li><a class="white-text" href="https://github.com/aleixmorgadas/nem-library-examples" target="_blank">
             <i class="material-icons tiny">link</i>
             nem library examples</a></li>
-          <li><a class="white-text"
-                 href="https://github.com/guillemsole/nem-library-angular2-seed"
-                 target="_blank">
+          <li><a class="white-text" href="https://github.com/guillemsole/nem-library-angular2-seed" target="_blank">
             <i class="material-icons tiny">link</i>
             angular seed repository</a></li>
-          <li><a class="white-text"
-                 href="https://github.com/guillemsole/nem-library-ionic2-seed"
-                 target="_blank">
+          <li><a class="white-text" href="https://github.com/guillemsole/nem-library-ionic2-seed" target="_blank">
             <i class="material-icons tiny">link</i>
             ionic seed repository</a></li>
         </ul>
@@ -219,21 +197,18 @@
         <h5 class="white-text">Connect</h5>
         <ul>
 
-          <li><a class="white-text"
-                 href="https://twitter.com/gsolecubilo"
-                 target="_blank">
-            <i class="material-icons tiny">link</i>
+          <li><a class="white-text" href="https://twitter.com/gsolecubilo" target="_blank">
+            <img width="20" height="20" src="/assets/img/twitter_logo_600x600.png">
             Guillem's Twitter
           </a></li>
-          <li><a class="white-text"
-                 href="https://twitter.com/aleix_mp"
-                 target="_blank">
-            <i class="material-icons tiny">link</i>
+          <li><a class="white-text" href="https://twitter.com/aleix_mp" target="_blank">
+            <img width="20" height="20" src="/assets/img/twitter_logo_600x600.png">
             Aleix's Twitter</a></li>
-          <li><a class="white-text"
-                 href="https://medium.com/@aleixmorgadas"
-                 target="_blank">
-            <i class="material-icons tiny">link</i>
+          <li><a class="white-text" href="https://medium.com/@gsolecubilo" target="_blank">
+            <img width="20" height="20" src="/assets/img/medium.png">
+            Guillem's Medium</a></li>
+          <li><a class="white-text" href="https://medium.com/@aleixmorgadas" target="_blank">
+            <img width="20" height="20" src="/assets/img/medium.png">
             Aleix's Medium</a></li>
         </ul>
       </div>
