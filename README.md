@@ -4,7 +4,6 @@
 
 - [NEMLibrary.com](https://nemlibrary.com):
 - [Angular 4](https://angular.io/):
-- [Angular Material](https://material.angular.io):
 - [Materialize](http://materializecss.com/):
 
 ## Development server
