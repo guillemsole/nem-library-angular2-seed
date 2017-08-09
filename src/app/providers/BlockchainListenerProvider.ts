@@ -1,5 +1,8 @@
 import {BlockchainListener} from "nem-library";
 
+// https://pretestnet1.nem.ninja:7891/node/extended-info
 export function BlockchainListenerProvider(): BlockchainListener {
-    return new BlockchainListener({domain:"23.228.67.85"});
+  return new BlockchainListener({
+    domain: "pretestnet1.nem.ninja"
+  });
 }
