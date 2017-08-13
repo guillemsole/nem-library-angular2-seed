@@ -8,8 +8,7 @@ import {
   Transaction,
   UnconfirmedTransactionListener
 } from "nem-library";
-import { Angulartics2GoogleAnalytics } from 'angulartics2';
-import {Subscription} from "rxjs/Subscription";
+import {Angulartics2GoogleAnalytics} from 'angulartics2';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +17,8 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class AppComponent {
   // Listeners
-  blockSubscription: Subscription;
-  unconfirmedTransactionsSubscription: Subscription;
+  blockSubscription;
+  unconfirmedTransactionsSubscription;
 
   blocks: Block[] = [];
   incomingTransactions: Transaction[] = [];
