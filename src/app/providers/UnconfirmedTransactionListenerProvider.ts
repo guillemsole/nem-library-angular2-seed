@@ -1,11 +1,7 @@
-import {UnconfirmedTransactionListener} from "nem-library";
+import {UnconfirmedTransactionListener} from 'nem-library';
 
 // https://pretestnet1.nem.ninja:7891/node/extended-info
 // https://nis2.wnsl.biz:7779/
 export function UnconfirmedTransactionListenerProvider(): UnconfirmedTransactionListener {
-  return new UnconfirmedTransactionListener({
-    protocol: "https",
-    domain: "pretestnet1.nem.ninja",
-    port: 7779
-  });
+  return new UnconfirmedTransactionListener();
 }

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   AccountHttp,
   Address,
@@ -7,8 +7,8 @@ import {
   Pageable,
   Transaction,
   UnconfirmedTransactionListener
-} from "nem-library";
-import {Angulartics2GoogleAnalytics} from 'angulartics2';
+} from 'nem-library';
+import { Angulartics2GoogleAnalytics } from 'angulartics2';
 
 @Component({
   selector: 'app-root',
@@ -26,36 +26,38 @@ export class AppComponent {
   allTransactions: Transaction[] = [];
 
   // View
-  blockListenerActive: boolean = false;
-  unconfirmedTransactionsActive: boolean = false;
-  allTransactionsActive: boolean = false;
+  blockListenerActive = false;
+  unconfirmedTransactionsActive = false;
+  allTransactionsActive = false;
 
   constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
-              private blockchainListener: BlockchainListener,
-              private unconfirmedTransactionListener: UnconfirmedTransactionListener,
-              private accountHttp: AccountHttp) {
+    private blockchainListener: BlockchainListener,
+    private unconfirmedTransactionListener: UnconfirmedTransactionListener,
+    private accountHttp: AccountHttp) {
   }
 
   startFetchingTransactions(address_raw: string) {
     try {
-      let address = new Address(address_raw.trim());
+      const address = new Address(address_raw.trim());
       console.log(address);
       this.allTransactions = [];
       this.allTransactionsPaginated =
-        this.accountHttp.allTransactionsPaginated(address, undefined, 5);
+        this.accountHttp.allTransactionsPaginated(address, {
+          pageSize: 5
+        });
 
       this.allTransactionsPaginated.subscribe(x => {
         this.allTransactions = this.allTransactions.concat(x);
       });
       this.allTransactionsActive = true;
     } catch (e) {
-      alert("malformed address");
+      alert('malformed address');
     }
 
   }
 
   fetchMoreTransactions() {
-    if(this.allTransactionsActive){
+    if (this.allTransactionsActive) {
       this.allTransactionsPaginated.nextPage();
     }
   }
@@ -63,16 +65,16 @@ export class AppComponent {
   changeBlockListener() {
     if (this.blockListenerActive) {
       this.blockSubscription.unsubscribe();
-      console.log("Unsubscribed")
+      console.log('Unsubscribed');
     } else {
       this.blockSubscription = this.blockchainListener.newBlock()
         .subscribe(block => {
-          console.log("NEW BLOCK", block);
+          console.log('NEW BLOCK', block);
           this.blocks.unshift(block);
         }, err => {
-          console.error("blockchainListener", err);
+          console.error('blockchainListener', err);
         });
-      console.log("subscribed");
+      console.log('subscribed');
     }
     this.blockListenerActive = !this.blockListenerActive;
   }
@@ -80,7 +82,7 @@ export class AppComponent {
   stopUnconfirmedListener() {
     if (this.unconfirmedTransactionsActive) {
       this.unconfirmedTransactionsSubscription.unsubscribe();
-      console.log("Unsubscribed")
+      console.log('Unsubscribed');
     }
     this.unconfirmedTransactionsActive = false;
   }
@@ -93,14 +95,14 @@ export class AppComponent {
         this.unconfirmedTransactionListener
           .given(address)
           .subscribe(transaction => {
-            console.log("unconfirmedTransactionListener for " + raw_address, transaction);
+            console.log('unconfirmedTransactionListener for ' + raw_address, transaction);
             this.incomingTransactions.unshift(transaction);
           }, err => {
-            console.error("unconfirmedTransactionListener for " + raw_address, err)
+            console.error('unconfirmedTransactionListener for ' + raw_address, err)
           });
       this.unconfirmedTransactionsActive = true;
     } catch (e) {
-      alert("malformed address");
+      alert('malformed address');
     }
 
   }
